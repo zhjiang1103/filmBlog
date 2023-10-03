@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import * as ioicons from 'react-icons/io5'
 import ViewFilm from './ViewFilm'
 import CreateContact from './CreateContact'
+import FilmDetail from './FilmDetail'
 
 const FilmList = () => {
 
@@ -72,8 +73,11 @@ return (
                 {/* {contacts.map((contact) => {
                     return <li key={contact.id}> <ViewContact contact={contact}  toUpdate={onUpdate}  toDelete={onDelete}/></li>
                 })} */}
-                {films.map((film) => {
+                {/* {films.map((film) => {
                     return <li key={film.id}> <ViewFilm film={film}/></li>
+                })} */}
+                {films.map((film) => {
+                    return <li key={film.id}> <FilmDetail film={film}/></li>
                 })}
             </ul>
         </div>
