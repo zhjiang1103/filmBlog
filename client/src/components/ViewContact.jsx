@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import moment from 'moment';
 import Button from 'react-bootstrap/Button';
 import * as ioicons from 'react-icons/io5'
 
@@ -14,13 +15,16 @@ const ViewContact = (props) => {
     //     toDelete(toDeleteContact)
     // }
 
+// Function to format the release date
+
+
     return (
         <Card>
             <Card.Body>
             <Card.Title>{props.film.name}</Card.Title>
             <Card.Text>
                 <div>
-                    Released Date:{props.film.release}
+                    Released Date:{moment(props.film.released).format('LL')}
                 </div>
                 <div>
                     Category:{props.film.category}
