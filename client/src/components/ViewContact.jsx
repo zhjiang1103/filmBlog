@@ -3,34 +3,32 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import * as ioicons from 'react-icons/io5'
 
-const ViewContact = ({contact, toUpdate, toDelete}) => {
+//const ViewContact = ({contact, toUpdate, toDelete})
+const ViewContact = (props) => {
 
-    const onUpdate = (toUpdateContact) => {
-        toUpdate(toUpdateContact)
-    }
+    // const onUpdate = (toUpdateContact) => {
+    //     toUpdate(toUpdateContact)
+    // }
 
-    const onDelete = (toDeleteContact) => {
-        toDelete(toDeleteContact)
-    }
+    // const onDelete = (toDeleteContact) => {
+    //     toDelete(toDeleteContact)
+    // }
 
     return (
         <Card>
             <Card.Body>
-            <Card.Title>{contact.name}</Card.Title>
+            <Card.Title>{props.film.name}</Card.Title>
             <Card.Text>
                 <div>
-                    Email:{contact.email}
+                    Released Date:{props.film.release}
                 </div>
                 <div>
-                    Phone:{contact.phone}
-                </div>
-                <div>
-                    Notes:{contact.notes}
+                    Category:{props.film.category}
                 </div>
                 
             </Card.Text>
-            <Button variant="outline-danger" onClick={()=>{onDelete(contact)}} style={{padding: '0.6em', marginRight:'0.9em'}}><ioicons.IoTrash/></Button>
-            <Button variant="outline-info" onClick={()=>{onUpdate(contact)}} style={{padding: '0.6em'}}> <ioicons.IoSync/></Button>
+            {/* <Button variant="outline-danger" onClick={()=>{onDelete(contact)}} style={{padding: '0.6em', marginRight:'0.9em'}}><ioicons.IoTrash/></Button>
+            <Button variant="outline-info" onClick={()=>{onUpdate(contact)}} style={{padding: '0.6em'}}> <ioicons.IoSync/></Button> */}
             </Card.Body>
         </Card>
     )
