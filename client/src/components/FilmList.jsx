@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import * as ioicons from 'react-icons/io5'
-import ViewContact from './ViewContact'
+import ViewFilm from './ViewFilm'
 import CreateContact from './CreateContact'
 
-const Contacts = () => {
+const FilmList = () => {
 
     // this is my original state with an array of films 
     const [films, setFilms] = useState([]);
@@ -73,7 +73,7 @@ return (
                     return <li key={contact.id}> <ViewContact contact={contact}  toUpdate={onUpdate}  toDelete={onDelete}/></li>
                 })} */}
                 {films.map((film) => {
-                    return <li key={film.id}> <ViewContact film={film}/></li>
+                    return <li key={film.id}> <ViewFilm film={film}/></li>
                 })}
             </ul>
         </div>
@@ -82,4 +82,4 @@ return (
 );
   }
 
-export default Contacts
+export default FilmList

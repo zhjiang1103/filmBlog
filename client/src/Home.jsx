@@ -1,7 +1,7 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyNavBar from './components/Navbar'
-import Contacts from './components/Contacts'
+import FilmList from './components/FilmList'
 
 
 function Home() {
@@ -9,7 +9,7 @@ function Home() {
   return (
     <div className="App">
       <MyNavBar />
-      <Contacts />
+      <FilmList />
 
     </div>
   )

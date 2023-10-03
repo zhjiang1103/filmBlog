@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import * as ioicons from 'react-icons/io5'
 
 //const ViewContact = ({contact, toUpdate, toDelete})
-const ViewContact = (props) => {
+const ViewFilm = (props) => {
 
     // const onUpdate = (toUpdateContact) => {
     //     toUpdate(toUpdateContact)
@@ -39,4 +39,4 @@ const ViewContact = (props) => {
 
 }
 
-export default ViewContact
+export default ViewFilm
