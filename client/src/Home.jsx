@@ -26,7 +26,7 @@ function Home() {
       <Routes>
         <Route path="/" element={<Welcome />}/> 
         <Route path="/films" element={<FilmList />} />
-        <Route path="/films/:id" element={<Welcome />} />
+        <Route path="/films/:id" element={<FilmDetail />} />
         
         
         </Routes>  

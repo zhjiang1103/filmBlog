@@ -7,7 +7,7 @@ const Welcome = () => {
     return (
         <>
             <div>Welcome to Janet's Film App!</div>
-            <h1>Film {id}</h1>
+            
         </>
     )
 }

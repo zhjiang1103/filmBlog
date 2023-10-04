@@ -51,19 +51,19 @@ app.get('/api/films', async (req, res) => {
 
 // });
 
-// // delete request for students
-// app.delete('/api/contactlist/:contactId', async (req, res) => {
-//     try {
-//         const contactId = req.params.contactId;
-//         await db.query('DELETE FROM contact WHERE id=$1', [contactId]);
-//         console.log("From the delete request-url", contactId);
-//         res.status(200).end();
-//     } catch (e) {
-//         console.log(e);
-//         return res.status(400).json({ e });
+// get request for individual film based on ID
+app.get('/api/films/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const { rows: film } = await db.query('SELECT * FROM playingfilms WHERE id=$1', [id]);
+        console.log("From select by ID", id);
+        res.send(film);
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ e });
 
-//     }
-// });
+    }
+});
 
 // //A put request - Update a contact 
 // app.put('/api/contactlist/:contactId', async (req, res) =>{
