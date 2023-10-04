@@ -2,10 +2,14 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import moment from 'moment';
 import Button from 'react-bootstrap/Button';
-import * as ioicons from 'react-icons/io5'
+import { Route, Routes, Link, useParams } from 'react-router-dom';
+import FilmDetail from './FilmDetail';
+
+
 
 //const ViewContact = ({contact, toUpdate, toDelete})
 const ViewFilm = (props) => {
+    const { id } = useParams();
 
     // const onUpdate = (toUpdateContact) => {
     //     toUpdate(toUpdateContact)
@@ -15,26 +19,32 @@ const ViewFilm = (props) => {
     //     toDelete(toDeleteContact)
     // }
 
-// Function to format the release date
+    // Function to format the release date
 
 
     return (
-        <Card>
-            <Card.Body>
-            <Card.Title>{props.film.name}</Card.Title>
-            <Card.Text>
-                <div>
-                    Released Date:{moment(props.film.released).format('LL')}
-                </div>
-                <div>
-                    Category:{props.film.category}
-                </div>
-                
-            </Card.Text>
-            {/* <Button variant="outline-danger" onClick={()=>{onDelete(contact)}} style={{padding: '0.6em', marginRight:'0.9em'}}><ioicons.IoTrash/></Button>
-            <Button variant="outline-info" onClick={()=>{onUpdate(contact)}} style={{padding: '0.6em'}}> <ioicons.IoSync/></Button> */}
-            </Card.Body>
-        </Card>
+        <>
+            <Card style={{ width: "40%" }}>
+                <Card.Body>
+                    <Card.Title>{props.film.name}</Card.Title>
+                    <Card.Text>
+                        <div>
+                            Released Date:{moment(props.film.released).format('LL')}
+                        </div>
+                        <div>
+                            Category:{props.film.category}
+                        </div>
+
+                    </Card.Text>
+                    <Link to={`/films/${props.film.id}`}>
+                        <Button variant="outline-info" style={{ padding: '0.6em' }}>Film Details</Button>
+                    </Link>
+
+                    {/* <Button variant="outline-info" onClick={() => {navigate(`/films/${props.film.id}`);}} style={{padding: '0.6em'}}> Film Details</Button> */}
+                </Card.Body>
+            </Card>
+
+        </>
     )
 
 }
