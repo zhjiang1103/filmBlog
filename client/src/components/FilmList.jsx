@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import ViewFilm from './ViewFilm'
-import Form from './Form'
+import form from './Form'
 import FilmDetail from './FilmDetail'
 import { Route, Routes, Link, useParams } from 'react-router-dom';
 
@@ -87,7 +87,7 @@ const FilmList = () => {
                 </ul>
             </div>
             <div>
-                {<Form onAddFilm={onAddFilm} />}
+                <form onAddFilm={onAddFilm} />
             </div>
             {/* <CreateContact key={editingcontact ? editingcontact.id : null} onSaveContact={onSaveContact} editingContact={editingcontact} onUpdateContact={updateContact} /> */}
         </div>

@@ -9,7 +9,7 @@ import FilmDetail from './FilmDetail';
 
 //const ViewContact = ({contact, toUpdate, toDelete})
 const ViewFilm = (props) => {
-    const { id } = useParams();
+
 
     // const onUpdate = (toUpdateContact) => {
     //     toUpdate(toUpdateContact)

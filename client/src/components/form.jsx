@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 
    
 
-const Form = (props) => {
+const form = (props) => {
      
     const [newFilm, setNewFilm] = useState({
         name: "",
@@ -97,7 +97,7 @@ const Form = (props) => {
   );
 };
 
-export default Form;
+export default form;
 
   
 
