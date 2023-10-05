@@ -27,29 +27,29 @@ app.get('/api/films', async (req, res) => {
     }
 });
 
-// // create the POST request
-// app.post('/api/contactlist', async (req, res) => {
-//     try {
-//         const newContact = {
-//             name: req.body.name,
-//             email: req.body.email,
-//             phone: req.body.phone,
-//             notes: req.body.notes,
-//         };
-//         //console.log([newStudent.firstname, newStudent.lastname, newStudent.iscurrent]);
-//         const result = await db.query(
-//             'INSERT INTO contact(name, email, phone, notes) VALUES($1, $2, $3, $4) RETURNING *',
-//             [newContact.name, newContact.email, newContact.phone, newContact.notes],
-//         );
-//         console.log(result.rows[0]);
-//         res.json(result.rows[0]);
+// create the POST request
+app.post('/api/films', async (req, res) => {
+    try {
+        const newFilm = {
+            name: req.body.name,
+            released: req.body.released,
+            category: req.body.category,
+            description: req.body.description,
+        };
+        //console.log([newFilm.name, newFilm.released, newFilm.category, newFilm.description]);
+        const result = await db.query(
+            'INSERT INTO playingfilms(name, released, category, description) VALUES($1, $2, $3, $4) RETURNING *',
+            [newFilm.name, newFilm.released, newFilm.category, newFilm.description],
+        );
+        console.log(result.rows[0]);
+        res.json(result.rows[0]);
 
-//     } catch (e) {
-//         console.log(e);
-//         return res.status(400).json({ e });
-//     }
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ e });
+    }
 
-// });
+});
 
 // get request for individual film based on ID
 app.get('/api/films/:id', async (req, res) => {
