@@ -35,11 +35,12 @@ app.post('/api/films', async (req, res) => {
             released: req.body.released,
             category: req.body.category,
             description: req.body.description,
+            url:req.body.url,
         };
         //console.log([newFilm.name, newFilm.released, newFilm.category, newFilm.description]);
         const result = await db.query(
-            'INSERT INTO playingfilms(name, released, category, description) VALUES($1, $2, $3, $4) RETURNING *',
-            [newFilm.name, newFilm.released, newFilm.category, newFilm.description],
+            'INSERT INTO playingfilms(name, released, category, description,url) VALUES($1, $2, $3, $4, $5) RETURNING *',
+            [newFilm.name, newFilm.released, newFilm.category, newFilm.description, newFilm.url],
         );
         console.log(result.rows[0]);
         res.json(result.rows[0]);

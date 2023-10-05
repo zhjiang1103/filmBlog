@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react'
-import * as ioicons from 'react-icons/io5'
 import ViewFilm from './ViewFilm'
-import CreateContact from './CreateContact'
+import Form from './Form'
 import FilmDetail from './FilmDetail'
-import { Route, Routes, Link, useParams} from 'react-router-dom';
+import { Route, Routes, Link, useParams } from 'react-router-dom';
 
 
 const FilmList = () => {
 
-    
+
     // this is my original state with an array of films 
     const [films, setFilms] = useState([]);
 
@@ -29,10 +28,10 @@ const FilmList = () => {
         loadFilms();
     }, [films]);
 
-    //     const onSaveContact = (newContact) => {
-    //                 console.log("Inside the post", newContact);
-    //                 setContacts((contacts) => [...contacts, newContact]);
-    //     }
+    const onAddFilm = (newFilm) => {
+        console.log("Inside the post", newFilm);
+        setFilms((films) => [...films, newFilm]);
+    }
 
 
     //     //A function to control the update in the parent (student component)
@@ -81,15 +80,15 @@ const FilmList = () => {
                         return <li key={film.id}> <ViewFilm film={film} /></li>
                     })}
 
-                 
+
                     {/* {films.map((film) => {
                     return <li key={film.id}> <FilmDetail film={film}/></li>
                 })} */}
                 </ul>
             </div>
-            {/* <Routes>
-                <Route path="/films/:id" element={<FilmDetail />} />
-            </Routes> */}
+            <div>
+                {<Form onAddFilm={onAddFilm} />}
+            </div>
             {/* <CreateContact key={editingcontact ? editingcontact.id : null} onSaveContact={onSaveContact} editingContact={editingcontact} onUpdateContact={updateContact} /> */}
         </div>
     );
