@@ -6,7 +6,7 @@ import FilmDetail from './components/FilmDetail';
 import ViewFilm from './components/ViewFilm';
 import {Link,Routes, Route } from 'react-router-dom';
 import Welcome from './components/Welcome';
-import form from './components/Form';
+import NewFilmForm from './components/NewFilmForm';
 
 function Home() {
 
@@ -31,7 +31,7 @@ function Home() {
         <Route path="/" element={<Welcome />}/> 
         <Route path="/films" element={<FilmList />} />
         <Route path="/films/:id" element={<FilmDetail />} />
-        <Route path="/films/new" element={<form />} />
+        <Route path="/films/new" element={<NewFilmForm />} />
         
         
         </Routes>  
