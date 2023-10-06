@@ -10,6 +10,7 @@ const FilmList = () => {
 
     // this is my original state with an array of films 
     const [films, setFilms] = useState([]);
+    const [loading, setLoading] = useState(true);
 
 
     //this is the state needed for the UpdateRequest
@@ -26,12 +27,22 @@ const FilmList = () => {
 
     useEffect(() => {
         loadFilms();
-    }, [films]);
+    }, []);
 
-    const onAddFilm = (newFilm) => {
-        console.log("Inside the post", newFilm);
-        setFilms((films) => [...films, newFilm]);
+    const handlePostRequest = (newFilm) => {
+        console.log("Inside the POST, ", newFilm);
+        fetch("http://localhost:8080/films", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newFilm)
+        })
+        .then((response) => response.json())
+        .then((newFilm) => {
+            console.log("In the post, ", newFilm);
+            setFilms([...films, newFilm]);
+        })
     }
+
 
 
     //     //A function to control the update in the parent (student component)
@@ -72,22 +83,18 @@ const FilmList = () => {
         <div className="mybody">
             <div className="list-students">
                 <h2>Films list </h2>
+              
+                
                 <ul>
-                    {/* {contacts.map((contact) => {
-                    return <li key={contact.id}> <ViewContact contact={contact}  toUpdate={onUpdate}  toDelete={onDelete}/></li>
-                })} */}
-                    {films.map((film) => {
-                        return <li key={film.id}> <ViewFilm film={film} /></li>
-                    })}
-
-
-                    {/* {films.map((film) => {
-                    return <li key={film.id}> <FilmDetail film={film}/></li>
-                })} */}
+                    {films.map((film) => (
+                        <li key={film.id}> <ViewFilm film={film} /></li>
+                    ))}
                 </ul>
+        
+                
             </div>
             <div>
-                <NewFilmForm onAddFilm={onAddFilm} />
+                <NewFilmForm onAddFilm={handlePostRequest} />
             </div>
             {/* <CreateContact key={editingcontact ? editingcontact.id : null} onSaveContact={onSaveContact} editingContact={editingcontact} onUpdateContact={updateContact} /> */}
         </div>

@@ -1,56 +1,51 @@
 import React, { useRef, useState } from 'react';
 import { Button, Form } from "react-bootstrap";
+import FilmList from './FilmList';
 
-   
+
 
 const NewFilmForm = (props) => {
-     
-    const [newFilm, setNewFilm] = useState({
-        name: "",
-        released: "",
-        category: "",
-        description: "",
-        url: "",
-    })
-  // Refs to get values from input fields
-  const nameRef = useRef(null);
-  const releasedRef = useRef(null);
-  const categoryRef = useRef(null);
-  const descriptionRef = useRef(null);
-  const urlRef = useRef(null)
 
-  const handleAddFilm = (event) => {
-    event.preventDefault();
 
-    // Get values from refs
-    const name = nameRef.current.value;
-    const released = releasedRef.current.value;
-    const category = categoryRef.current.value;
-    const description = descriptionRef.current.value;
-    const url = urlRef.current.value;
-    
-    setNewFilm({
-        name,
-        released,
-        category,
-        description,
-        url,
-      });  
-    
 
-    // Call the provided callback to add the film
-    props.onAddFilm(newFilm);
+    // Refs to get values from input fields
+    const nameRef = useRef();
+    const releasedRef = useRef();
+    const categoryRef = useRef();
+    const descriptionRef = useRef();
+    const urlRef = useRef()
 
-    // Clear the form fields
-    nameRef.current.value = '';
-    releasedRef.current.value = '';
-    categoryRef.current.value = '';
-    descriptionRef.current.value = '';
-    urlRef.current.value = '';
-  };
+    const handleAddFilm = (event) => {
+        event.preventDefault();
 
-  return (
-    <Form className="form-students" onSubmit={handleAddFilm}>
+        // Get values from refs
+        const newFilm = {
+            name: nameRef.current?.value,
+            released: releasedRef.current?.value,
+            category: categoryRef.current?.value,
+            description: descriptionRef.current?.value,
+            url: urlRef.current?.value,
+        };
+
+
+
+
+        console.log("newFilm", newFilm)
+        // Call the provided callback to add the film
+        props.onAddFilm(newFilm);
+
+        // Clear the form fields
+        nameRef.current.value = '';
+        releasedRef.current.value = '';
+        categoryRef.current.value = '';
+        descriptionRef.current.value = '';
+        urlRef.current.value = '';
+    };
+
+
+
+    return (
+        <Form className="form-students" onSubmit={handleAddFilm}>
             <Form.Group>
                 <Form.Label>Film Name</Form.Label>
                 <input
@@ -58,7 +53,8 @@ const NewFilmForm = (props) => {
                     id="add-user-name"
                     placeholder="Name"
                     required
-                    value={nameRef}
+                    ref={nameRef}
+                //onChange={handleAddFilm}
                 />
             </Form.Group>
             <Form.Group>
@@ -68,7 +64,8 @@ const NewFilmForm = (props) => {
                     id="add-user-lastname"
                     placeholder="Released Date"
                     required
-                    value={releasedRef}
+                    ref={releasedRef}
+                //onChange={handleAddFilm}
                 />
             </Form.Group>
             <Form.Group>
@@ -77,13 +74,15 @@ const NewFilmForm = (props) => {
                     type="text"
                     id="add-user-lastname"
                     placeholder="Category"
-                    value={categoryRef}
+                    ref={categoryRef}
+                //onChange={handleAddFilm}
                 />
             </Form.Group>
             <Form.Label>Description</Form.Label>
             <textarea
                 placeholder="Film description"
-                value={descriptionRef}
+                ref={descriptionRef}
+                //onChange={handleAddFilm}
                 rows={4} // You can adjust the number of rows as needed
             ></textarea>
 
@@ -91,13 +90,13 @@ const NewFilmForm = (props) => {
                 <Button type="submit" variant="outline-success">
                     Add Film
                 </Button>
-                
+
             </Form.Group>
         </Form>
-  );
+    );
 };
 
 export default NewFilmForm
 
-  
+
 
