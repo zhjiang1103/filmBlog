@@ -35,11 +35,7 @@ const NewFilmForm = (props) => {
         props.onAddFilm(newFilm);
 
         // Clear the form fields
-        nameRef.current.value = '';
-        releasedRef.current.value = '';
-        categoryRef.current.value = '';
-        descriptionRef.current.value = '';
-        urlRef.current.value = '';
+       event.target.reset()
     };
 
 
