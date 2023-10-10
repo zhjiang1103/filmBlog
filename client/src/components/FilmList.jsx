@@ -1,17 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect} from 'react'
+
 import ViewFilm from './ViewFilm'
-import NewFilmForm from './NewFilmForm'
-import FilmDetail from './FilmDetail'
+
 import { Route, Routes, Link, useParams } from 'react-router-dom';
 
 
 const FilmList = () => {
-
+    
 
     // this is my original state with an array of films 
     const [films, setFilms] = useState([]);
-    const [loading, setLoading] = useState(true);
-
+   
 
     //this is the state needed for the UpdateRequest
     //const [editingcontact, setEditingContact] = useState(null)
@@ -29,20 +28,20 @@ const FilmList = () => {
         loadFilms();
     }, []);
 
-    const handlePostRequest = (newFilm) => {
-        console.log("Inside the POST, ", newFilm);
-        fetch("http://localhost:8080/films", {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newFilm)
-        })
-        .then((response) => response.json())
-        .then((newFilm) => {
-            console.log("In the post, ", newFilm);
-            setFilms([...films, newFilm]);
-        })
-    }
-
+    
+    // const handlePostRequest = () => {
+    //     console.log("Inside the POST, ", newFilm);
+    //     fetch("http://localhost:8080/films", {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify(newFilm)
+    //     })
+    //     .then((response) => response.json())
+    //     .then((newFilm) => {
+    //         console.log("In the post, ", newFilm);
+    //         setFilms([...films, newFilm]);
+    //     })
+    // }
 
 
     //     //A function to control the update in the parent (student component)
@@ -94,7 +93,7 @@ const FilmList = () => {
                 
             </div>
             <div>
-                <NewFilmForm onAddFilm={handlePostRequest} />
+               
             </div>
             {/* <CreateContact key={editingcontact ? editingcontact.id : null} onSaveContact={onSaveContact} editingContact={editingcontact} onUpdateContact={updateContact} /> */}
         </div>

@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react';
+
 import { Button, Form } from "react-bootstrap";
-import FilmList from './FilmList';
 
 
 
-const NewFilmForm = (props) => {
 
+const NewFilmForm = () => {
+//const [newFilm, setNewFilm] = useState({})
 
+//const [newFilm, setNewFilm] = useState({});
 
     // Refs to get values from input fields
     const nameRef = useRef();
@@ -19,7 +21,7 @@ const NewFilmForm = (props) => {
         event.preventDefault();
 
         // Get values from refs
-        const newFilm = {
+        const film = {
             name: nameRef.current?.value,
             released: releasedRef.current?.value,
             category: categoryRef.current?.value,
@@ -30,17 +32,35 @@ const NewFilmForm = (props) => {
 
 
 
-        console.log("newFilm", newFilm)
-        // Call the provided callback to add the film
-        props.onAddFilm(newFilm);
 
-        // Clear the form fields
-       event.target.reset()
+
+        // Call the provided callback to add the film
+       // props.onAddFilm(newFilm);
+       
+
+        
+
+       
+        //console.log("Inside the POST, ", newFilm);
+        fetch("http://localhost:8080/api/films", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(film)
+        })
+        .then(() => event.target.reset())
+
+       
     };
 
-
+    const handleReleaseDateChange = (newValue)=>(
+        console.log(newValue)
+    )
 
     return (
+       
+    
+   
+
         <Form className="form-students" onSubmit={handleAddFilm}>
             <Form.Group>
                 <Form.Label>Film Name</Form.Label>
@@ -59,10 +79,11 @@ const NewFilmForm = (props) => {
                     type="text"
                     id="add-user-lastname"
                     placeholder="Released Date"
-                    required
+                    //required
                     ref={releasedRef}
                 //onChange={handleAddFilm}
                 />
+                
             </Form.Group>
             <Form.Group>
                 <Form.Label>Category</Form.Label>
@@ -89,6 +110,7 @@ const NewFilmForm = (props) => {
 
             </Form.Group>
         </Form>
+       
     );
 };
 

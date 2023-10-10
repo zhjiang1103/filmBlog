@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react';
 
 
 
-//const ViewContact = ({contact, toUpdate, toDelete})
+
 const FilmDetail = () => {
     const { id } = useParams();
 

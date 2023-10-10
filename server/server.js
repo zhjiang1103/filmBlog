@@ -29,6 +29,7 @@ app.get('/api/films', async (req, res) => {
 
 // create the POST request
 app.post('/api/films', async (req, res) => {
+    console.log("req.body",req.body)
     try {
         const newFilm = {
             name: req.body.name,
