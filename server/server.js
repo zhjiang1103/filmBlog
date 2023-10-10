@@ -27,43 +27,45 @@ app.get('/api/films', async (req, res) => {
     }
 });
 
-// // create the POST request
-// app.post('/api/contactlist', async (req, res) => {
-//     try {
-//         const newContact = {
-//             name: req.body.name,
-//             email: req.body.email,
-//             phone: req.body.phone,
-//             notes: req.body.notes,
-//         };
-//         //console.log([newStudent.firstname, newStudent.lastname, newStudent.iscurrent]);
-//         const result = await db.query(
-//             'INSERT INTO contact(name, email, phone, notes) VALUES($1, $2, $3, $4) RETURNING *',
-//             [newContact.name, newContact.email, newContact.phone, newContact.notes],
-//         );
-//         console.log(result.rows[0]);
-//         res.json(result.rows[0]);
+// create the POST request
+app.post('/api/films', async (req, res) => {
+    console.log("req.body",req.body)
+    try {
+        const newFilm = {
+            name: req.body.name,
+            released: req.body.released,
+            category: req.body.category,
+            description: req.body.description,
+            url:req.body.url,
+        };
+        //console.log([newFilm.name, newFilm.released, newFilm.category, newFilm.description]);
+        const result = await db.query(
+            'INSERT INTO playingfilms(name, released, category, description,url) VALUES($1, $2, $3, $4, $5) RETURNING *',
+            [newFilm.name, newFilm.released, newFilm.category, newFilm.description, newFilm.url],
+        );
+        console.log(result.rows[0]);
+        res.json(result.rows[0]);
 
-//     } catch (e) {
-//         console.log(e);
-//         return res.status(400).json({ e });
-//     }
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ e });
+    }
 
-// });
+});
 
-// // delete request for students
-// app.delete('/api/contactlist/:contactId', async (req, res) => {
-//     try {
-//         const contactId = req.params.contactId;
-//         await db.query('DELETE FROM contact WHERE id=$1', [contactId]);
-//         console.log("From the delete request-url", contactId);
-//         res.status(200).end();
-//     } catch (e) {
-//         console.log(e);
-//         return res.status(400).json({ e });
+// get request for individual film based on ID
+app.get('/api/films/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const { rows: film } = await db.query('SELECT * FROM playingfilms WHERE id=$1', [id]);
+        console.log("From select by ID", id);
+        res.send(film);
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ e });
 
-//     }
-// });
+    }
+});
 
 // //A put request - Update a contact 
 // app.put('/api/contactlist/:contactId', async (req, res) =>{
