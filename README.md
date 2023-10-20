@@ -29,7 +29,7 @@ DB_URI="postgresql://localhost/DATABASENAME"
 
 10. Go to localhost:5173 and you should see something like this  💪
 
-![You will something like this in your terminal.](file:///Users/tpl1222_1/Desktop/Screen%20Shot%202023-10-20%20at%204.43.21%20PM.png)
+![You will something like this in your terminal.](https://github.com/zhjiang1103/filmBlog/blob/individualFilm/Screen%20Shot%202023-10-20%20at%204.43.21%20PM.png?raw=true)
 
 ⚡ **Notes** ⚡  
 * React requires **Node >= 14.0.0** & **npm >= 5.6**
