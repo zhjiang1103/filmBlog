@@ -1,4 +1,4 @@
-# Express and React App with Vite
+# FilmBlog
  ⚡ Create a working full-stack app with React and Express in minutes by running your client using Vite, your server using Express, and dumping your db in the template ⚡
 
 ## Step-by-Step Instructions - To use this project as your starting point  🚀  
